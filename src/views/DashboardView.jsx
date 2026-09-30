@@ -70,7 +70,7 @@ export default function DashboardView({ onSelectPage, triggerNotification, onAdd
       </div>
 
       {/* Main Grid: Map & Needs */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.35fr 1fr', gap: '1.1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.35fr 1fr', gap: '1.1rem', alignItems: 'start' }}>
         {/* Interactive Detailed Black GIS Map */}
         <div className="glass-card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.8rem' }}>
@@ -164,13 +164,13 @@ export default function DashboardView({ onSelectPage, triggerNotification, onAdd
               <div style={{ fontWeight: 700, fontSize: '0.92rem' }}>⚡ Real-time Kernel Stream</div>
               <span className="badge badge-green" style={{ fontSize: '0.65rem' }}>HEALTHY 100%</span>
             </div>
-            <div className="terminal-window" style={{ height: '170px' }}>
+            <div className="terminal-window" style={{ height: '200px' }}>
               {events.map((e, idx) => (
                 <div key={idx} className="log-entry">
-                  <span style={{ color: '#94A3B8', fontSize: '0.7rem' }}>{e.time}</span>
-                  <span style={{ color: e.color, fontWeight: 700 }}>[{e.stage}]</span>
-                  <span style={{ color: '#CBD5E1' }}>{e.msg}</span>
-                  <span style={{ color: 'var(--neon-green)', marginLeft: 'auto', fontSize: '0.68rem' }}>{e.ms}</span>
+                  <span style={{ color: '#94A3B8', fontSize: '0.7rem', flexShrink: 0 }}>{e.time}</span>
+                  <span style={{ color: e.color, fontWeight: 700, flexShrink: 0 }}>[{e.stage}]</span>
+                  <span style={{ color: '#CBD5E1', flex: 1, minWidth: 0 }}>{e.msg}</span>
+                  <span style={{ color: 'var(--neon-green)', fontSize: '0.68rem', flexShrink: 0 }}>{e.ms}</span>
                 </div>
               ))}
             </div>

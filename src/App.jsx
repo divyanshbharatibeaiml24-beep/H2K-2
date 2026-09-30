@@ -12,6 +12,16 @@ import NirnayView from './views/NirnayView';
 import CitizenSignalsView from './views/CitizenSignalsView';
 import CivicNeedsView from './views/CivicNeedsView';
 import GenericView from './views/GenericView';
+import CivicTwinView from './views/CivicTwinView';
+import PredictionView from './views/PredictionView';
+import JanmatView from './views/JanmatView';
+import SetuPolicyView from './views/SetuPolicyView';
+import CitizenTrackerView from './views/CitizenTrackerView';
+import PublicInsightsView from './views/PublicInsightsView';
+import AuditView from './views/AuditView';
+import DataSourcesView from './views/DataSourcesView';
+import ModelMonitorView from './views/ModelMonitorView';
+import SettingsView from './views/SettingsView';
 
 import { INITIAL_SIGNALS, INITIAL_NEEDS, ROLES } from './data/seedData';
 
@@ -69,6 +79,12 @@ export default function App() {
 
   const allowedModules = ROLES[userRole]?.modules || [];
   const isPagePermitted = allowedModules.includes(currentPage);
+
+  // Common props for module views
+  const viewProps = {
+    onSelectPage: setCurrentPage,
+    triggerNotification
+  };
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>
@@ -138,15 +154,9 @@ export default function App() {
             onRecluster={handleRecluster}
           />
         ) : currentPage === "Simulation Lab" ? (
-          <SimulationLabView 
-            onSelectPage={setCurrentPage}
-            triggerNotification={triggerNotification}
-          />
+          <SimulationLabView {...viewProps} />
         ) : currentPage === "NIRNAY" ? (
-          <NirnayView 
-            onSelectPage={setCurrentPage}
-            triggerNotification={triggerNotification}
-          />
+          <NirnayView {...viewProps} />
         ) : currentPage === "Citizen Signals" ? (
           <CitizenSignalsView 
             signals={signals}
@@ -160,6 +170,26 @@ export default function App() {
             triggerNotification={triggerNotification}
             onRecluster={handleRecluster}
           />
+        ) : currentPage === "Civic Twin" ? (
+          <CivicTwinView {...viewProps} />
+        ) : currentPage === "Prediction" ? (
+          <PredictionView {...viewProps} />
+        ) : currentPage === "JANMAT" ? (
+          <JanmatView {...viewProps} />
+        ) : currentPage === "SETU Policy Copilot" ? (
+          <SetuPolicyView {...viewProps} />
+        ) : currentPage === "Citizen Tracker" ? (
+          <CitizenTrackerView {...viewProps} />
+        ) : currentPage === "Public Insights" ? (
+          <PublicInsightsView {...viewProps} />
+        ) : currentPage === "Audit & Provenance" ? (
+          <AuditView {...viewProps} />
+        ) : currentPage === "Data Sources" ? (
+          <DataSourcesView {...viewProps} />
+        ) : currentPage === "Model Monitor" ? (
+          <ModelMonitorView {...viewProps} />
+        ) : currentPage === "Settings" ? (
+          <SettingsView {...viewProps} />
         ) : (
           <GenericView 
             page={currentPage}

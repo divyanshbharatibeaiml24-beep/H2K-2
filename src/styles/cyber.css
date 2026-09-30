@@ -237,7 +237,7 @@ body {
   border: 1px solid rgba(0, 212, 255, 0.3);
   border-radius: 10px;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   padding: 0.85rem;
   height: 220px;
   overflow-y: auto;
@@ -250,10 +250,10 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: baseline;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.45;
+  white-space: normal;
+  word-break: break-word;
+  flex-wrap: wrap;
 }
 
 /* Corner Toast Notification */
